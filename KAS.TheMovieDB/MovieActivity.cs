@@ -194,7 +194,7 @@ namespace KAS.TheMovieDB
 				Movie movie = null;
 				try {
 					var api = new ThemoviedbAPI (Consts.THEMOVIEDB_API_KEY);
-					movie = await api.GetMoveByID (movieID);
+					movie = await api.GetMovieByID (movieID);
 				} catch (Exception exception) {
 					System.Diagnostics.Debug.WriteLine (exception);
 				}

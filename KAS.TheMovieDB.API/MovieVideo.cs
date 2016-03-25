@@ -4,6 +4,10 @@ using Newtonsoft.Json;
 namespace KAS.TheMovieDB.API
 {
 	#region MovieVideo
+	/// <summary>
+	/// The class contains a description of the video movie.
+	/// </summary>
+
 	public class MovieVideo
 	{
 		[JsonProperty("id")]

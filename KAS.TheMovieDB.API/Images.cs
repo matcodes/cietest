@@ -4,6 +4,10 @@ using Newtonsoft.Json;
 namespace KAS.TheMovieDB.API
 {
 	#region Images
+	/// <summary>
+	/// The class contains information about the ways and image sizes.
+	/// </summary>
+
 	public class Images
 	{
 		[JsonProperty("base_url")]

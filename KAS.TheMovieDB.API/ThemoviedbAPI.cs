@@ -9,6 +9,10 @@ using Newtonsoft.Json;
 namespace KAS.TheMovieDB.API
 {
 	#region ThemoviedbAPI
+	/// <summary>
+	/// The class implements methods to query TheMovieDB API.
+	/// </summary>
+
 	public class ThemoviedbAPI
 	{
 		#region Static members
@@ -23,6 +27,12 @@ namespace KAS.TheMovieDB.API
 
 		private static Configuration __configuration = null;
 
+		/// <summary>
+		/// Gets the configuration.
+		/// </summary>
+		/// <returns>The configuration.</returns>
+		/// <param name="apiKey">API key.</param>
+
 		public static async Task<Configuration> GetConfiguration(string apiKey)
 		{
 			if (__configuration == null) {
@@ -35,11 +45,20 @@ namespace KAS.TheMovieDB.API
 
 		private string _key;
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="KAS.TheMovieDB.API.ThemoviedbAPI"/> class.
+		/// </summary>
+		/// <param name="key">API key.</param>
+
 		public ThemoviedbAPI (string key)
 		{
 			_key = key;
 		}
 
+		/// <summary>
+		/// Gets the configuration async.
+		/// </summary>
+		/// <returns>The configuration async.</returns>
 
 		public async Task<Configuration> GetConfigurationAsync()
 		{
@@ -50,6 +69,12 @@ namespace KAS.TheMovieDB.API
 			var configuration = await this.ExecuteRequestAsync<Configuration> (request);
 			return configuration;
 		}
+
+		/// <summary>
+		/// Gets the now playing movies async.
+		/// </summary>
+		/// <returns>The now playing movies async.</returns>
+		/// <param name="page">Page number.</param>
 
 		public async Task<MoviesResult> GetNowPlayingMoviesAsync(int page = 1)
 		{
@@ -62,7 +87,13 @@ namespace KAS.TheMovieDB.API
 			return moviesResult;
 		}
 
-		public async Task<Movie> GetMoveByID(int id)
+		/// <summary>
+		/// Gets the move by Id.
+		/// </summary>
+		/// <returns>The movie.</returns>
+		/// <param name="id">Movie identifier.</param>
+
+		public async Task<Movie> GetMovieByID(int id)
 		{
 			var request = new HttpRequestMessage { 
 				RequestUri = this.CreateRequestUri(MOVIE_BY_ID_ENDPOINT, id),
@@ -72,6 +103,13 @@ namespace KAS.TheMovieDB.API
 			var movie = await this.ExecuteRequestAsync<Movie> (request);
 			return movie;
 		}
+
+		/// <summary>
+		/// Gets the similar movies by movie Id.
+		/// </summary>
+		/// <returns>The similar movies.</returns>
+		/// <param name="id">Movie identifier.</param>
+		/// <param name="page">Page number.</param>
 
 		public async Task<MoviesResult> GetSimilarMoviesByID(int id, int page = 1)
 		{
@@ -84,6 +122,12 @@ namespace KAS.TheMovieDB.API
 			return moviesResult;
 		}
 
+		/// <summary>
+		/// Gets the movie videos by Id.
+		/// </summary>
+		/// <returns>The movie videos.</returns>
+		/// <param name="id">Movie identifier.</param>
+
 		public async Task<MovieVideosResult> GetMovieVideosByID(int id)
 		{
 			var request = new HttpRequestMessage { 
@@ -94,6 +138,13 @@ namespace KAS.TheMovieDB.API
 			var movieVideosResult = await this.ExecuteRequestAsync<MovieVideosResult> (request);
 			return movieVideosResult;
 		}
+
+		/// <summary>
+		/// Executes the request async.
+		/// </summary>
+		/// <returns>The response data object.</returns>
+		/// <param name="request">Request.</param>
+		/// <typeparam name="T">The response data object type parameter.</typeparam>
 
 		private async Task<T> ExecuteRequestAsync<T>(HttpRequestMessage request)
 		{
@@ -108,7 +159,7 @@ namespace KAS.TheMovieDB.API
 						result = JsonConvert.DeserializeObject<T> (content);
 					else {
 						var error = JsonConvert.DeserializeObject<Error> (content);
-						throw new ThemoviedbException (error.Message, response.StatusCode, error.Code, null);
+						throw new TheMovieDBException (error.Message, response.StatusCode, error.Code, null);
 					}
 				}
 				Debug.WriteLine (content);
@@ -116,10 +167,15 @@ namespace KAS.TheMovieDB.API
 			return result;
 		}
 
+		/// <summary>
+		/// Creates the request URI.
+		/// </summary>
+		/// <returns>The request URI.</returns>
+		/// <param name="resource">Request URI resource string.</param>
+		/// <param name="args">Request URI arguments.</param>
+
 		private Uri CreateRequestUri(string resource, params Object[] args)
 		{
-//			resource.AssertNotNull("resource");
-
 			StringBuilder builder = new StringBuilder();
 			builder.Append(BASE_URI);
 			builder.Append(VERSION);

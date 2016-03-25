@@ -4,6 +4,10 @@ using Newtonsoft.Json;
 namespace KAS.TheMovieDB.API
 {
 	#region Period
+	/// <summary>
+	/// The class contains a description of the period.
+	/// </summary>
+
 	public class Period
 	{
 		[JsonProperty("minimum")]
