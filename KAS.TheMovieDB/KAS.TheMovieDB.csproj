@@ -128,7 +128,7 @@
     <Folder Include="UI\VoteView\" />
     <Folder Include="LocalStore\" />
   </ItemGroup>
-  <Import Project="..\..\KAS.TheMovieDB\KAS.TheMovieDB.API\KAS.TheMovieDB.API.projitems" Label="Shared" Condition="Exists('..\..\KAS.TheMovieDB\KAS.TheMovieDB.API\KAS.TheMovieDB.API.projitems')" />
+  <Import Project="..\KAS.TheMovieDB.API\KAS.TheMovieDB.API.projitems" Label="Shared" Condition="Exists('..\KAS.TheMovieDB.API\KAS.TheMovieDB.API.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <ItemGroup>
     <XamarinComponentReference Include="square.picasso">

@@ -4,7 +4,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KAS.TheMovieDB", "KAS.Themoviedb\KAS.TheMovieDB.csproj", "{DE3214B9-606A-4FDA-9A54-5FD7ACE81604}"
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KAS.TheMovieDB.API", "KAS.TheMovieDB.API\KAS.TheMovieDB.API_.csproj", "{4F28423C-DED5-412C-AFAA-5B3CF19464B2}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KAS.TheMovieDB.API", "..\KAS.TheMovieDB\KAS.TheMovieDB.API\KAS.TheMovieDB.API.shproj", "{4F28423C-DED5-412C-AFAA-5B3CF19464B2}"
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KAS.TheMovieDB.API", "KAS.TheMovieDB.API\KAS.TheMovieDB.API.shproj", "{4F28423C-DED5-412C-AFAA-5B3CF19464B2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
