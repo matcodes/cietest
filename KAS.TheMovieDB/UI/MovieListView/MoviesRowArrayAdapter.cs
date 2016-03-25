@@ -97,7 +97,7 @@ namespace KAS.TheMovieDB
 
 					await this.BuildPosterBaseUri ();
 
-					var apiClient = new ThemoviedbAPI (Consts.THEMOVIEDB_API_KEY);
+					var apiClient = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
 
 					var result = await apiClient.GetNowPlayingMoviesAsync (_lastLoadingPage);
 
@@ -130,7 +130,7 @@ namespace KAS.TheMovieDB
 		protected async Task BuildPosterBaseUri ()
 		{
 			if (String.IsNullOrEmpty (_posterBaseUri)) {
-				var configuration = await ThemoviedbAPI.GetConfiguration (Consts.THEMOVIEDB_API_KEY);
+				var configuration = await TheMovieDBAPI.GetConfiguration (Consts.THEMOVIEDB_API_KEY);
 				var posterBaseUri = configuration.Images.SecureBaseUrl;
 
 				var imageWidth = AppHelper.DisplayWidth / 5;

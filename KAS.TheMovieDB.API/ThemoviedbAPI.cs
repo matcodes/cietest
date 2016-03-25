@@ -13,7 +13,7 @@ namespace KAS.TheMovieDB.API
 	/// The class implements methods to query TheMovieDB API.
 	/// </summary>
 
-	public class ThemoviedbAPI
+	public class TheMovieDBAPI
 	{
 		#region Static members
 		private static readonly string BASE_URI = "https://api.themoviedb.org";
@@ -36,7 +36,7 @@ namespace KAS.TheMovieDB.API
 		public static async Task<Configuration> GetConfiguration(string apiKey)
 		{
 			if (__configuration == null) {
-				var api = new ThemoviedbAPI (apiKey);
+				var api = new TheMovieDBAPI (apiKey);
 				__configuration = await api.GetConfigurationAsync ();
 			}
 			return __configuration;
@@ -50,7 +50,7 @@ namespace KAS.TheMovieDB.API
 		/// </summary>
 		/// <param name="key">API key.</param>
 
-		public ThemoviedbAPI (string key)
+		public TheMovieDBAPI (string key)
 		{
 			_key = key;
 		}

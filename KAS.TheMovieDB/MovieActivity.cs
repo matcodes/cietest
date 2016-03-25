@@ -97,7 +97,7 @@ namespace KAS.TheMovieDB
 				this.DisableCommands ();
 				this.ShowProgressBar ();
 				try {
-					var api = new ThemoviedbAPI (Consts.THEMOVIEDB_API_KEY);
+					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
 					var movieVideosResult = await api.GetMovieVideosByID (this.Movie.ID);
 					var movieVideo = movieVideosResult.Results.FirstOrDefault (mv => mv.Site == Consts.VIDEO_SITE_YOUTUBE);
 					if (movieVideo != null) {
@@ -193,7 +193,7 @@ namespace KAS.TheMovieDB
 			Task.Run (async () => {
 				Movie movie = null;
 				try {
-					var api = new ThemoviedbAPI (Consts.THEMOVIEDB_API_KEY);
+					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
 					movie = await api.GetMovieByID (movieID);
 				} catch (Exception exception) {
 					System.Diagnostics.Debug.WriteLine (exception);
@@ -259,7 +259,7 @@ namespace KAS.TheMovieDB
 		{
 			Task.Run (async () => {
 				try {
-					var api = new ThemoviedbAPI (Consts.THEMOVIEDB_API_KEY);
+					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
 					var similarMovies = await api.GetSimilarMoviesByID (this.Movie.ID);
 					if (similarMovies.Results.Length > 0) {
 						_firstSimilarMovie = similarMovies.Results [0];
@@ -281,7 +281,7 @@ namespace KAS.TheMovieDB
 
 		private async Task<string> GetPosterBaseUri (int imageWidth)
 		{
-			var configuration = await ThemoviedbAPI.GetConfiguration (Consts.THEMOVIEDB_API_KEY);
+			var configuration = await TheMovieDBAPI.GetConfiguration (Consts.THEMOVIEDB_API_KEY);
 			var posterBaseUri = configuration.Images.SecureBaseUrl;
 
 			var index = 0;

@@ -6,12 +6,18 @@ Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KAS.TheMovieDB.API", "KAS.T
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "KAS.TheMovieDB.API", "KAS.TheMovieDB.API\KAS.TheMovieDB.API.shproj", "{4F28423C-DED5-412C-AFAA-5B3CF19464B2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KAS.TheMovieDB.Test", "KAS.TheMovieDB.Test\KAS.TheMovieDB.Test.csproj", "{D585C692-9EAD-4355-868C-28AF67C210AC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D585C692-9EAD-4355-868C-28AF67C210AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D585C692-9EAD-4355-868C-28AF67C210AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D585C692-9EAD-4355-868C-28AF67C210AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D585C692-9EAD-4355-868C-28AF67C210AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DE3214B9-606A-4FDA-9A54-5FD7ACE81604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE3214B9-606A-4FDA-9A54-5FD7ACE81604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE3214B9-606A-4FDA-9A54-5FD7ACE81604}.Release|Any CPU.ActiveCfg = Release|Any CPU
