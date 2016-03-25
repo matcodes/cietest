@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string name="appName">Movie Explorer</string>
+	<string name="mainPage">Movie Explorer</string>
+	<string name="moviePage">Movie Explore</string>
+	<string name="favoritesPage">Movie Explorer: Favorites</string>
+	<string name="playVideo">Play Video</string>
+	<string name="saveToFavorites">Save To Favorites</string>
+	<string name="releaseDate">Release Date: {0}</string>
+	<string name="voteCount">(from {0} votes)</string>
+</resources>

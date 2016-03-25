@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectGuid>{DE3214B9-606A-4FDA-9A54-5FD7ACE81604}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>KAS.TheMovieDB</RootNamespace>
+    <AndroidApplication>True</AndroidApplication>
+    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+    <AndroidResgenClass>Resource</AndroidResgenClass>
+    <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
+    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+    <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
+    <AssemblyName>KAS.Themoviedb</AssemblyName>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidLinkMode>None</AndroidLinkMode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Mono.Android" />
+    <Reference Include="Xamarin.Android.Support.v4">
+      <HintPath>..\packages\Xamarin.Android.Support.v4.23.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v4.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+      <HintPath>..\packages\Xamarin.Android.Support.v7.AppCompat.23.1.1.1\lib\MonoAndroid403\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Square.Picasso">
+      <HintPath>..\packages\Square.Picasso.2.5.2.1\lib\MonoAndroid\Square.Picasso.dll</HintPath>
+    </Reference>
+    <Reference Include="Square.OkIO">
+      <HintPath>..\packages\Square.OkIO.1.6.0.0\lib\MonoAndroid\Square.OkIO.dll</HintPath>
+    </Reference>
+    <Reference Include="Square.OkHttp">
+      <HintPath>..\packages\Square.OkHttp.2.7.5.0\lib\MonoAndroid\Square.OkHttp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="MainActivity.cs" />
+    <Compile Include="Resources\Resource.designer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Consts.cs" />
+    <Compile Include="AppHelper.cs" />
+    <Compile Include="UI\VoteView\VoteView.cs" />
+    <Compile Include="MovieActivity.cs" />
+    <Compile Include="SQLite.cs" />
+    <Compile Include="SQLiteAsync.cs" />
+    <Compile Include="LocalStore\LocalStore.cs" />
+    <Compile Include="FavoritesActivity.cs" />
+    <Compile Include="UI\MovieListView\FavoritesListView.cs" />
+    <Compile Include="UI\MovieListView\FavoritesRowArrayAdapter.cs" />
+    <Compile Include="UI\MovieListView\MoviesListView.cs" />
+    <Compile Include="UI\MovieListView\MoviesRowArrayAdapter.cs" />
+    <Compile Include="SwipeInfo.cs" />
+    <Compile Include="LocalStore\MovieEx.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AboutResources.txt" />
+    <None Include="Properties\AndroidManifest.xml" />
+    <None Include="Assets\AboutAssets.txt" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Main.axml" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
+    <AndroidResource Include="Resources\layout\MovieLine.axml" />
+    <AndroidResource Include="Resources\mipmap-hdpi\EmptyVote.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\FullVote.png" />
+    <AndroidResource Include="Resources\mipmap-ldi\EmptyVote.png" />
+    <AndroidResource Include="Resources\mipmap-ldi\FullVote.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\EmptyVote.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\FullVote.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\EmptyVote.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\FullVote.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\EmptyVote.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\FullVote.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\EmptyVote.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\FullVote.png" />
+    <AndroidResource Include="Resources\drawable\EmptyVote.png" />
+    <AndroidResource Include="Resources\drawable\FullVote.png" />
+    <AndroidResource Include="Resources\layout\MoviePage.axml" />
+    <AndroidResource Include="Resources\layout\FavoritesPage.axml" />
+    <AndroidResource Include="Resources\drawable\Favorite.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\Favorite.png" />
+    <AndroidResource Include="Resources\mipmap-ldi\Favorite.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\Favorite.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\Favorite.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\Favorite.png" />
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\Favorite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="UI\" />
+    <Folder Include="UI\MovieListView\" />
+    <Folder Include="Resources\mipmap-ldi\" />
+    <Folder Include="UI\VoteView\" />
+    <Folder Include="LocalStore\" />
+  </ItemGroup>
+  <Import Project="..\..\KAS.TheMovieDB\KAS.TheMovieDB.API\KAS.TheMovieDB.API.projitems" Label="Shared" Condition="Exists('..\..\KAS.TheMovieDB\KAS.TheMovieDB.API\KAS.TheMovieDB.API.projitems')" />
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
+  <ItemGroup>
+    <XamarinComponentReference Include="square.picasso">
+      <Version>2.5.2.2</Version>
+      <Visible>False</Visible>
+    </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidEnvironment Include="enviroment.txt" />
+  </ItemGroup>
+</Project>

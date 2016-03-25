@@ -1,0 +1,28 @@
+﻿<Properties RefactoringSettings.EnableRefactorings="True" StartupItem="KAS.Themoviedb\KAS.TheMovieDB.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="KAS.Themoviedb\LocalStore\LocalStore.cs">
+    <Files>
+      <File FileName="KAS.Themoviedb\UI\MovieListView\FavoritesRowArrayAdapter.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\Consts.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\UI\MovieListView\MoviesRowArrayAdapter.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\FavoritesActivity.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\MainActivity.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\MovieActivity.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\UI\MovieListView\FavoritesListView.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\UI\MovieListView\MoviesListView.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\LocalStore\LocalStore.cs" Line="41" Column="23" />
+      <File FileName="KAS.Themoviedb\UI\VoteView\VoteView.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\AppHelper.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\SQLite.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\SwipeInfo.cs" Line="1" Column="1" />
+      <File FileName="KAS.Themoviedb\LocalStore\MovieEx.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="D:\KAS\KAS.Themoviedb\KAS.Themoviedb\UI\MovieListView\MovieListView.cs" line="45" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.KAS.TheMovieDB AndroidDesignerPreferredDevice="Nexus 4" />
+</Properties>

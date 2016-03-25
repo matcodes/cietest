@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{4F28423C-DED5-412C-AFAA-5B3CF19464B2}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>KAS.TheMovieDB.API</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Configuration.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Error.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Images.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Movie.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MoviesResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovieVideo.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MovieVideosResult.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Period.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemoviedbAPI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ThemoviedbException.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true" />
+    <RelativeLayout
+        android:id="@+id/movieData"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:id="@+id/poster"
+            android:layout_width="140dp"
+            android:layout_height="210dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp" />
+        <RelativeLayout
+            android:id="@+id/info"
+            android:layout_width="match_parent"
+            android:layout_height="210dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@+id/poster">
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:text="Movie title Movie title Movie title Movie title"
+                style="?android:attr/textAppearanceMedium"
+                android:textColor="@android:color/white" />
+            <TextView
+                android:id="@+id/releaseDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_alignLeft="@+id/title"
+                android:layout_below="@+id/title"
+                android:text="Release Date: 01/01/2016"
+                style="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
+            <KAS.TheMovieDB.VoteView
+                android:id="@+id/vote"
+                android:layout_width="150dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_alignLeft="@+id/title"
+                android:layout_below="@+id/releaseDate" />
+            <TextView
+                android:id="@+id/voteCount"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/title"
+                android:layout_below="@+id/vote"
+                android:text="(from 2345 votes)"
+                android:gravity="center"
+                style="?android:attr/textAppearanceSmall"
+                android:textColor="@android:color/darker_gray" />
+            <Button
+                android:id="@+id/playVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginBottom="5dp"
+                android:layout_alignLeft="@+id/title"
+                android:layout_above="@+id/saveToFavorites"
+                android:text="@string/playVideo"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@android:color/holo_green_light" />
+            <Button
+                android:id="@+id/saveToFavorites"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignLeft="@+id/title"
+                android:text="@string/saveToFavorites"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:background="@android:color/holo_orange_light" />
+        </RelativeLayout>
+        <LinearLayout
+            android:id="@+id/simularMovies"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginBottom="0dp"
+            android:layout_alignParentBottom="true">
+            <ImageView
+                android:id="@+id/firstMovie"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+            <ImageView
+                android:id="@+id/secondMovie"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_marginRight="5dp"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+            <ImageView
+                android:id="@+id/thirdMovie"
+                android:layout_width="100dp"
+                android:layout_height="150dp"
+                android:layout_weight="1"
+                android:layout_gravity="center" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/overview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/poster"
+            android:layout_above="@+id/simularMovies" />
+    </RelativeLayout>
+</RelativeLayout>

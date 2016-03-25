@@ -1,0 +1,15 @@
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\KAS.Themoviedb.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Mono.Android.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\mscorlib.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Newtonsoft.Json.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Square.OkHttp.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Square.OkIO.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Square.Picasso.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\System.Core.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\System.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\System.Net.Http.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\System.Xml.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Xamarin.Android.Support.v4.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\Xamarin.Android.Support.v7.AppCompat.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\System.Runtime.Serialization.dll
+D:\KAS\KAS.Themoviedb\KAS.Themoviedb\obj\Debug\assemblies\System.ServiceModel.Internals.dll
