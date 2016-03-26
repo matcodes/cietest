@@ -93,7 +93,7 @@ namespace KAS.TheMovieDB.API
 		/// <returns>The movie.</returns>
 		/// <param name="id">Movie identifier.</param>
 
-		public async Task<Movie> GetMovieByID(int id)
+		public async Task<Movie> GetMovieByIDAsync(int id)
 		{
 			var request = new HttpRequestMessage { 
 				RequestUri = this.CreateRequestUri(MOVIE_BY_ID_ENDPOINT, id),
@@ -111,7 +111,7 @@ namespace KAS.TheMovieDB.API
 		/// <param name="id">Movie identifier.</param>
 		/// <param name="page">Page number.</param>
 
-		public async Task<MoviesResult> GetSimilarMoviesByID(int id, int page = 1)
+		public async Task<MoviesResult> GetSimilarMoviesByIDAsync(int id, int page = 1)
 		{
 			var request = new HttpRequestMessage {
 				RequestUri = this.CreateRequestUri (SIMILAR_MOVIES_BY_ID_ENDPOINT, id, page),
@@ -128,7 +128,7 @@ namespace KAS.TheMovieDB.API
 		/// <returns>The movie videos.</returns>
 		/// <param name="id">Movie identifier.</param>
 
-		public async Task<MovieVideosResult> GetMovieVideosByID(int id)
+		public async Task<MovieVideosResult> GetMovieVideosByIDAsync(int id)
 		{
 			var request = new HttpRequestMessage { 
 				RequestUri = this.CreateRequestUri (MOVIE_VIDEOS_BY_ID_ENDPOINT, id),

@@ -98,7 +98,7 @@ namespace KAS.TheMovieDB
 				this.ShowProgressBar ();
 				try {
 					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
-					var movieVideosResult = await api.GetMovieVideosByID (this.Movie.ID);
+					var movieVideosResult = await api.GetMovieVideosByIDAsync (this.Movie.ID);
 					var movieVideo = movieVideosResult.Results.FirstOrDefault (mv => mv.Site == Consts.VIDEO_SITE_YOUTUBE);
 					if (movieVideo != null) {
 						var uri = String.Format (Consts.YOUTUBE_VIDEO_URI, movieVideo.Key);
@@ -181,10 +181,15 @@ namespace KAS.TheMovieDB
 
 		private void ShowMovie(Movie movie)
 		{
-			if (movie != null) {
-				Intent intent = new Intent(this, typeof(MovieActivity));
-				intent.PutExtra(Consts.EXTRA_MOVIE, movie.ID.ToString());
-				this.StartActivity(intent);
+			this.DisableCommands ();
+			try {
+				if (movie != null) {
+					Intent intent = new Intent (this, typeof(MovieActivity));
+					intent.PutExtra (Consts.EXTRA_MOVIE, movie.ID.ToString ());
+					this.StartActivity (intent);
+				}
+			} finally {
+				this.EnableCommands ();
 			}
 		}
 
@@ -194,7 +199,7 @@ namespace KAS.TheMovieDB
 				Movie movie = null;
 				try {
 					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
-					movie = await api.GetMovieByID (movieID);
+					movie = await api.GetMovieByIDAsync (movieID);
 				} catch (Exception exception) {
 					System.Diagnostics.Debug.WriteLine (exception);
 				}
@@ -260,7 +265,7 @@ namespace KAS.TheMovieDB
 			Task.Run (async () => {
 				try {
 					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
-					var similarMovies = await api.GetSimilarMoviesByID (this.Movie.ID);
+					var similarMovies = await api.GetSimilarMoviesByIDAsync (this.Movie.ID);
 					if (similarMovies.Results.Length > 0) {
 						_firstSimilarMovie = similarMovies.Results [0];
 						this.LoadPoster (_firstSimilarMovie, _firstMovie);
