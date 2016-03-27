@@ -18,10 +18,17 @@ using KAS.TheMovieDB.API;
 namespace KAS.TheMovieDB
 {
 	#region MovieActivity
+	/// <summary>
+	/// Page to display detailed information about the movie.
+	/// </summary>
 	[Activity (Label = "@string/moviePage")]			
 	public class MovieActivity : Activity
 	{
 		#region Static members
+		/// <summary>
+		/// The poster base URI.
+		/// </summary>
+
 		private static string __posterBaseUri;
 		#endregion
 
@@ -43,6 +50,23 @@ namespace KAS.TheMovieDB
 		private Movie _secondSimilarMovie = null;
 		private Movie _thirdSimilarMovie = null;
 
+		/// <summary>
+		/// The selected movie Id.
+		/// </summary>
+
+		private int _movieID = -1;
+
+		/// <summary>
+		/// The is favorite movie.
+		/// </summary>
+
+		private bool _isFavoriteMovie = false;
+
+		/// <summary>
+		/// Raises the create event.
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
+
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
 			base.OnCreate (savedInstanceState);
@@ -53,8 +77,7 @@ namespace KAS.TheMovieDB
 
 			var movieIDPar = this.Intent.GetStringExtra (Consts.EXTRA_MOVIE);
 
-			int movieID = -1;
-			int.TryParse (movieIDPar, out movieID);
+			int.TryParse (movieIDPar, out _movieID);
 
 			_movieData = this.FindViewById<RelativeLayout> (Resource.Id.movieData);
 			_movieData.Visibility = ViewStates.Gone;
@@ -72,7 +95,10 @@ namespace KAS.TheMovieDB
 			};
 			_saveToFavorites = this.FindViewById<Button> (Resource.Id.saveToFavorites);
 			_saveToFavorites.Click += (sender, args) => {
-				this.AddToFavorites();
+				if (_isFavoriteMovie)
+					this.BuyTickets();
+				else
+					this.AddToFavorites();
 			};
 			_overview = this.FindViewById<TextView> (Resource.Id.overview);
 			_firstMovie = this.FindViewById<ImageView> (Resource.Id.firstMovie);
@@ -87,9 +113,28 @@ namespace KAS.TheMovieDB
 			_thirdMovie.Click += (sender, args) => {
 				this.ShowMovie(_thirdSimilarMovie);
 			};
-
-			this.GetMovieByID (movieID);
 		}
+
+		/// <summary>
+		/// Raises the start event.
+		/// </summary>
+
+		protected override void OnStart ()
+		{
+			base.OnStart ();
+
+			if (this.Movie == null)
+				this.GetMovieByID ();
+			else {
+				this.CheckIsFavoriteMovie ();
+				this.SetFavoriteButtonText ();
+			}
+		}
+
+		/// <summary>
+		/// Plaies the video.
+		/// </summary>
+		/// <returns>The video.</returns>
 
 		private async Task PlayVideo()
 		{
@@ -114,6 +159,10 @@ namespace KAS.TheMovieDB
 			}
 		}
 
+		/// <summary>
+		/// Disables the commands.
+		/// </summary>
+
 		private void DisableCommands()
 		{
 			this.RunOnUiThread (() => {
@@ -124,6 +173,10 @@ namespace KAS.TheMovieDB
 				_thirdMovie.Clickable = false;
 			});
 		}
+
+		/// <summary>
+		/// Enables the commands.
+		/// </summary>
 
 		private void EnableCommands()
 		{
@@ -136,6 +189,10 @@ namespace KAS.TheMovieDB
 			});
 		}
 
+		/// <summary>
+		/// Shows the progress bar.
+		/// </summary>
+
 		private void ShowProgressBar()
 		{
 			this.RunOnUiThread (() => {
@@ -143,12 +200,20 @@ namespace KAS.TheMovieDB
 			});	
 		}
 
+		/// <summary>
+		/// Hides the progress bar.
+		/// </summary>
+
 		private void HideProgressBar()
 		{
 			this.RunOnUiThread (() => {
 				_progressBar.Visibility = ViewStates.Gone;
 			});
 		}
+
+		/// <summary>
+		/// Adds current movie to favorites.
+		/// </summary>
 
 		private void AddToFavorites()
 		{
@@ -170,6 +235,30 @@ namespace KAS.TheMovieDB
 			}
 		}
 
+		/// <summary>
+		/// Buies the tickets.
+		/// </summary>
+
+		private void BuyTickets()
+		{
+			if (this.Movie != null) {
+				this.DisableCommands ();
+				this.ShowProgressBar ();
+				try {
+					var uri = String.Format (Consts.FANDANGO_URI, this.Movie.Title);
+					var intent = new Intent (Intent.ActionView, Android.Net.Uri.Parse (uri));
+					this.StartActivity (intent);
+				} finally {
+					this.HideProgressBar ();
+					this.EnableCommands ();
+				}
+			}
+		}
+
+		/// <summary>
+		/// Shows the favorites page.
+		/// </summary>
+
 		private void ShowFavorites()
 		{
 			this.RunOnUiThread (() => {
@@ -178,6 +267,11 @@ namespace KAS.TheMovieDB
 				this.StartActivity(intent);
 			});
 		}
+
+		/// <summary>
+		/// Shows the movie page.
+		/// </summary>
+		/// <param name="movie">Movie.</param>
 
 		private void ShowMovie(Movie movie)
 		{
@@ -193,19 +287,37 @@ namespace KAS.TheMovieDB
 			}
 		}
 
-		private void GetMovieByID(int movieID)
+		/// <summary>
+		/// Checks the is favorite movie.
+		/// </summary>
+
+		private void CheckIsFavoriteMovie()
+		{
+			var favorite = LocalStore.GetMovieByID (_movieID);
+			_isFavoriteMovie = (favorite != null);
+		}
+
+		/// <summary>
+		/// Gets the movie by Id.
+		/// </summary>
+
+		private void GetMovieByID()
 		{
 			Task.Run (async () => {
 				Movie movie = null;
 				try {
 					var api = new TheMovieDBAPI (Consts.THEMOVIEDB_API_KEY);
-					movie = await api.GetMovieByIDAsync (movieID);
+					movie = await api.GetMovieByIDAsync (_movieID);
+
+					this.CheckIsFavoriteMovie();
+
 				} catch (Exception exception) {
 					System.Diagnostics.Debug.WriteLine (exception);
 				}
 
-				if (movie != null)
+				if (movie != null) {
 					this.ShowMovieData (movie);
+				}
 				else {
 					this.RunOnUiThread (() => {
 						this.ShowMessage(Consts.MOVIE_LOAD_DATA_ERROR_MESSAGE_TEXT);
@@ -214,6 +326,21 @@ namespace KAS.TheMovieDB
 				}
 			});
 		}
+
+		/// <summary>
+		/// Sets the favorite button text.
+		/// </summary>
+
+		private void SetFavoriteButtonText()
+		{
+			var buttonTextID = (_isFavoriteMovie ? Resource.String.buyTickets : Resource.String.saveToFavorites);
+			_saveToFavorites.Text = this.Resources.GetString(buttonTextID);
+		}
+
+		/// <summary>
+		/// Shows the movie data.
+		/// </summary>
+		/// <param name="movie">Movie.</param>
 
 		private void ShowMovieData(Movie movie)
 		{
@@ -225,6 +352,8 @@ namespace KAS.TheMovieDB
 				_voteCount.Text = (this.Movie != null ? String.Format (this.Resources.GetString (Resource.String.voteCount), this.Movie.VoteCount) : "");
 				_overview.Text = (this.Movie != null ? this.Movie.Overview : "");
 
+				this.SetFavoriteButtonText();
+
 				_movieData.Visibility = ViewStates.Visible;
 				this.HideProgressBar();
 
@@ -232,6 +361,12 @@ namespace KAS.TheMovieDB
 				this.LoadSimularMovies();
 			});
 		}
+
+		/// <summary>
+		/// Loads the movie poster in the image view.
+		/// </summary>
+		/// <param name="movie">Movie.</param>
+		/// <param name="imageView">Image view.</param>
 
 		private void LoadPoster(Movie movie, ImageView imageView)
 		{
@@ -253,12 +388,21 @@ namespace KAS.TheMovieDB
 			});
 		}
 
+		/// <summary>
+		/// Shows the toast message.
+		/// </summary>
+		/// <param name="message">Message.</param>
+
 		private void ShowMessage(string message)
 		{
 			this.RunOnUiThread (() => {
 				AppHelper.ShowToast(this, message);
 			});
 		}
+
+		/// <summary>
+		/// Loads the simular movies.
+		/// </summary>
 
 		private void LoadSimularMovies()
 		{
@@ -284,6 +428,12 @@ namespace KAS.TheMovieDB
 			});
 		}
 
+		/// <summary>
+		/// Gets the poster base URI.
+		/// </summary>
+		/// <returns>The poster base URI.</returns>
+		/// <param name="imageWidth">Image width.</param>
+
 		private async Task<string> GetPosterBaseUri (int imageWidth)
 		{
 			var configuration = await TheMovieDBAPI.GetConfiguration (Consts.THEMOVIEDB_API_KEY);
@@ -306,6 +456,10 @@ namespace KAS.TheMovieDB
 			return posterBaseUri;
 		}
 
+		/// <summary>
+		/// Gets or sets the current movie.
+		/// </summary>
+		/// <value>The movie.</value>
 		private Movie Movie { get; set; }
 	}
 	#endregion

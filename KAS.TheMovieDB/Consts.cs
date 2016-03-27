@@ -11,6 +11,8 @@ namespace KAS.TheMovieDB
 
 		public static readonly string YOUTUBE_VIDEO_URI = "http://www.youtube.com/watch?v={0}";
 
+		public static readonly string FANDANGO_URI = "http://www.fandango.com/search/?q={0}";
+
 		public static readonly string EXTRA_MOVIE = "Movie";
 
 
@@ -21,6 +23,12 @@ namespace KAS.TheMovieDB
 		public static readonly string MOVIE_LOAD_DATA_ERROR_MESSAGE_TEXT = "Movie info not found!";
 		public static readonly string MOVIE_VIDEO_NOT_FOUND_MESSAGE_TEXT = "Video not found!";
 		public static readonly string MOVIE_SAVE_TO_FAVORIT_ERROR_MESSAGE_TEXT = "Save the item error.";
+
+		public static readonly string QUESTION_DELETE_ITEM_DIALOG_TITLE = "Delete item";
+		public static readonly string QUESTION_YES_BUTTON_TEXT = "Yes";
+		public static readonly string QUESTION_NO_BUTTON_TEXT = "No";
+
+		public static readonly string DELETE_FAVORITE_MOVIE_QUESTION_TEXT = "Do you want to delete the item from your favorite list?";
 	}
 	#endregion
 }

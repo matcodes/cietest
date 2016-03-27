@@ -6,6 +6,7 @@
 	<string name="favoritesPage">Movie Explorer: Favorites</string>
 	<string name="playVideo">Play Video</string>
 	<string name="saveToFavorites">Save To Favorites</string>
+	<string name="buyTickets">Buy Tickets</string>
 	<string name="releaseDate">Release Date: {0}</string>
 	<string name="voteCount">(from {0} votes)</string>
 </resources>

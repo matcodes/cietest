@@ -9,6 +9,10 @@ using Android.Support.V4.Widget;
 namespace KAS.TheMovieDB
 {
 	#region MainActivity
+	/// <summary>
+	/// Home application page. The list of new movies.
+	/// </summary>
+
 	[Activity (Label = "@string/mainPage", MainLauncher = true, Icon = "@mipmap/icon")]
 	public class MainActivity : Activity, SwipeRefreshLayout.IOnRefreshListener
 	{
@@ -16,7 +20,16 @@ namespace KAS.TheMovieDB
 		private MoviesListView _movieListView = null;
 		private ImageButton _favorites = null;
 
+		/// <summary>
+		/// Page list of favorite movies.
+		/// </summary>
+
 		private bool _isLoaded = false;
+
+		/// <summary>
+		/// Raises the create event.
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
@@ -69,6 +82,10 @@ namespace KAS.TheMovieDB
 			};
 		}
 
+		/// <summary>
+		/// Raises the start event.
+		/// </summary>
+
 		protected override void OnStart ()
 		{
 			base.OnStart ();
@@ -80,6 +97,10 @@ namespace KAS.TheMovieDB
 		}
 
 		#region SwipeRefreshLayout.IOnRefreshListener
+		/// <summary>
+		/// Raises the refresh event.
+		/// </summary>
+
 		public void OnRefresh ()
 		{
 			_movieListView.UpdateData ();

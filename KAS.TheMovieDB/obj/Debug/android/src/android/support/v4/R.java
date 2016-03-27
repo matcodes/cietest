@@ -1784,14 +1784,15 @@ containing a value of this type.
         public static int abc_shareactionprovider_share_with_application=0x7f060011;
         public static int abc_toolbar_collapse_description=0x7f060012;
         public static int appName=0x7f060014;
+        public static int buyTickets=0x7f06001a;
         public static int favoritesPage=0x7f060017;
         public static int mainPage=0x7f060015;
         public static int moviePage=0x7f060016;
         public static int playVideo=0x7f060018;
-        public static int releaseDate=0x7f06001a;
+        public static int releaseDate=0x7f06001b;
         public static int saveToFavorites=0x7f060019;
         public static int status_bar_notification_info_overflow=0x7f060013;
-        public static int voteCount=0x7f06001b;
+        public static int voteCount=0x7f06001c;
     }
     public static final class style {
         public static int AlertDialog_AppCompat=0x7f09007d;

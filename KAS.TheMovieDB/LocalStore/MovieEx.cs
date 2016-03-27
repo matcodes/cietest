@@ -5,12 +5,21 @@ using KAS.TheMovieDB.API;
 namespace KAS.TheMovieDB
 {
 	#region MovieEx
+	/// <summary>
+	/// Helper class storage of the movie in a local data store.
+	/// </summary>
+
 	public class MovieEx
 	{
 		public MovieEx()
 		{
 			
 		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="KAS.TheMovieDB.MovieEx"/> class.
+		/// </summary>
+		/// <param name="movie">Movie from TheMoveDBAPI.</param>
 
 		public MovieEx(Movie movie)
 		{
@@ -28,6 +37,11 @@ namespace KAS.TheMovieDB
 			this.VoteAvarage = movie.VoteAvarage;
 			this.VoteCount = movie.VoteCount;
 		}
+
+		/// <summary>
+		/// Initialization of TheMovieDBApi Movie based on the local storage of data.
+		/// </summary>
+		/// <returns>The movie from TheMovieDBAPI.</returns>
 
 		public Movie GetMovie()
 		{

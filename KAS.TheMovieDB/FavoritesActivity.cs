@@ -15,13 +15,27 @@ using Android.Support.V4.Widget;
 namespace KAS.TheMovieDB
 {
 	#region FavoritesActivity
+
+	/// <summary>
+	/// Page list of favorite movies.
+	/// </summary>
+
 	[Activity (Label = "@string/favoritesPage")]			
 	public class FavoritesActivity : Activity, SwipeRefreshLayout.IOnRefreshListener
 	{
 		private SwipeRefreshLayout _refreshFavorites = null;
 		private FavoritesListView _favoritesList = null;
 
+		/// <summary>
+		/// Page list of favorite movies.
+		/// </summary>
+
 		private bool _isLoaded = false;
+
+		/// <summary>
+		/// Raises the create event.
+		/// </summary>
+		/// <param name="savedInstanceState">Saved instance state.</param>
 
 		protected override void OnCreate (Bundle savedInstanceState)
 		{
@@ -66,6 +80,10 @@ namespace KAS.TheMovieDB
 			}
 		}
 
+		/// <summary>
+		/// Raises the start event.
+		/// </summary>
+
 		protected override void OnStart ()
 		{
 			base.OnStart ();
@@ -77,6 +95,10 @@ namespace KAS.TheMovieDB
 		}
 
 		#region SwipeRefreshLayout.IOnRefreshListener
+		/// <summary>
+		/// Raises the refresh event.
+		/// </summary>
+
 		public void OnRefresh ()
 		{
 			_favoritesList.UpdateData ();

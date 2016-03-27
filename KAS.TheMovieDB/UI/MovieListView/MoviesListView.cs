@@ -9,17 +9,38 @@ using KAS.TheMovieDB.API;
 namespace KAS.TheMovieDB
 {
 	#region MovieListView
+	/// <summary>
+	/// Сontrol to work with a list of movies.
+	/// </summary>
 	public class MoviesListView : ListView, AbsListView.IOnScrollListener
 	{
+		/// <summary>
+		/// Initializes a new instance of the <see cref="KAS.TheMovieDB.MoviesListView"/> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
+
 		public MoviesListView (Context context)
 			: this (context, null)
 		{
 		}
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="KAS.TheMovieDB.MoviesListView"/> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
+		/// <param name="attr">Attr.</param>
+
 		public MoviesListView(Context context, IAttributeSet attr) 
 			: this (context, attr, 0)
 		{
 		}
+
+		/// <summary>
+		/// Initializes a new instance of the <see cref="KAS.TheMovieDB.MoviesListView"/> class.
+		/// </summary>
+		/// <param name="context">Context.</param>
+		/// <param name="attr">Attr.</param>
+		/// <param name="defStyleAttr">Def style attr.</param>
 
 		public MoviesListView(Context context, IAttributeSet attr, int defStyleAttr)
 			: base(context, attr, defStyleAttr)
@@ -33,8 +54,23 @@ namespace KAS.TheMovieDB
 			};
 		}
 
+		/// <summary>
+		/// The start x of swipe.
+		/// </summary>
+
 		private int _startX = int.MinValue;
+		/// <summary>
+		/// The start y of swipe.
+		/// </summary>
+
 		private int _startY = int.MinValue;
+
+		/// <param name="e">The motion event.</param>
+		/// <summary>
+		/// Implement this method to handle touch screen motion events.
+		/// </summary>
+		/// <returns>To be added.</returns>
+		/// <param name="args">Arguments.</param>
 
 		public override bool OnTouchEvent (Android.Views.MotionEvent args)
 		{
@@ -83,11 +119,21 @@ namespace KAS.TheMovieDB
 			return result;
 		}
 
+		/// <summary>
+		/// Raises the start swipe event.
+		/// </summary>
+		/// <param name="swipeInfo">Swipe info.</param>
+
 		protected virtual bool OnStartSwipe(SwipeInfo swipeInfo)
 		{
 			System.Diagnostics.Debug.WriteLine ("Start swipe position: " + swipeInfo.Position.ToString ());
 			return false;
 		}
+
+		/// <summary>
+		/// Raises the continue swipe event.
+		/// </summary>
+		/// <param name="swipeInfo">Swipe info.</param>
 
 		protected virtual bool OnContinueSwipe(SwipeInfo swipeInfo)
 		{
@@ -95,11 +141,21 @@ namespace KAS.TheMovieDB
 			return false;
 		}
 
+		/// <summary>
+		/// Raises the end swipe event.
+		/// </summary>
+		/// <param name="swipeInfo">Swipe info.</param>
+
 		protected virtual bool OnEndSwipe(SwipeInfo swipeInfo)
 		{
 			System.Diagnostics.Debug.WriteLine ("End swipe position: " + swipeInfo.Position.ToString ());
 			return false;
 		}
+
+		/// <summary>
+		/// Creates the adapter.
+		/// </summary>
+		/// <returns>The adapter.</returns>
 
 		protected virtual IListAdapter CreateAdapter()
 		{
@@ -113,11 +169,19 @@ namespace KAS.TheMovieDB
 			return adapter;
 		}
 
+		/// <summary>
+		/// Updates the data.
+		/// </summary>
+
 		public void UpdateData()
 		{
 			if (this.MovieAdapter != null)
 				this.MovieAdapter.UpdateData ();
 		}
+
+		/// <summary>
+		/// Loads the data.
+		/// </summary>
 
 		public void LoadData()
 		{
@@ -126,16 +190,34 @@ namespace KAS.TheMovieDB
 		}
 
 		#region AbsListView.IOnScrollListener
+		/// <summary>
+		/// Raises the scroll event.
+		/// </summary>
+		/// <param name="view">View.</param>
+		/// <param name="firstVisibleItem">First visible item.</param>
+		/// <param name="visibleItemCount">Visible item count.</param>
+		/// <param name="totalItemCount">Total item count.</param>
+
 		public void OnScroll (AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount)
 		{
 			if ((!this.MovieAdapter.IsUpdating) && (firstVisibleItem + visibleItemCount == totalItemCount) && (firstVisibleItem > 0))
 				this.MovieAdapter.LoadData ();
 		}
 
+		/// <summary>
+		/// Raises the scroll state changed event.
+		/// </summary>
+		/// <param name="view">View.</param>
+		/// <param name="scrollState">Scroll state.</param>
+
 		public void OnScrollStateChanged (AbsListView view, ScrollState scrollState)
 		{
 		}
 		#endregion
+
+		/// <summary>
+		/// Dos the data loading.
+		/// </summary>
 
 		protected void DoDataLoading()
 		{
@@ -143,19 +225,41 @@ namespace KAS.TheMovieDB
 				this.DataLoading (this, EventArgs.Empty);
 		}
 
+		/// <summary>
+		/// Dos the data loaded.
+		/// </summary>
+
 		protected void DoDataLoaded()
 		{
 			if (this.DataLoaded != null)
 				this.DataLoaded (this, EventArgs.Empty);
 		}
 
+		/// <summary>
+		/// Gets the selected movie.
+		/// </summary>
+		/// <value>The selected movie.</value>
+
 		public Movie SelectedMovie { get; private set; }
+
+		/// <summary>
+		/// Gets the movie adapter.
+		/// </summary>
+		/// <value>The movie adapter.</value>
 
 		private MoviesRowArrayAdapter MovieAdapter {
 			get { return (this.Adapter as MoviesRowArrayAdapter); }
 		}
 
+		/// <summary>
+		/// Occurs when data loading.
+		/// </summary>
+
 		public event EventHandler DataLoading;
+
+		/// <summary>
+		/// Occurs when data loaded.
+		/// </summary>
 
 		public event EventHandler DataLoaded;
 	}

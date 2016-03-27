@@ -2033,6 +2033,9 @@ namespace KAS.TheMovieDB
 			// aapt resource value: 0x7f060014
 			public const int appName = 2131099668;
 			
+			// aapt resource value: 0x7f06001a
+			public const int buyTickets = 2131099674;
+			
 			// aapt resource value: 0x7f060017
 			public const int favoritesPage = 2131099671;
 			
@@ -2045,8 +2048,8 @@ namespace KAS.TheMovieDB
 			// aapt resource value: 0x7f060018
 			public const int playVideo = 2131099672;
 			
-			// aapt resource value: 0x7f06001a
-			public const int releaseDate = 2131099674;
+			// aapt resource value: 0x7f06001b
+			public const int releaseDate = 2131099675;
 			
 			// aapt resource value: 0x7f060019
 			public const int saveToFavorites = 2131099673;
@@ -2054,8 +2057,8 @@ namespace KAS.TheMovieDB
 			// aapt resource value: 0x7f060013
 			public const int status_bar_notification_info_overflow = 2131099667;
 			
-			// aapt resource value: 0x7f06001b
-			public const int voteCount = 2131099675;
+			// aapt resource value: 0x7f06001c
+			public const int voteCount = 2131099676;
 			
 			static String()
 			{
